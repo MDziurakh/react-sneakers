@@ -20,7 +20,7 @@ const CartInfo = ({ setOpenCart, orderSuccess, setOrderSuccess }) => {
           <h3>Order has been received!</h3>
           <p>
             You can check your orders in{" "}
-            <NavLink to="/user">
+            <NavLink to="user">
               <span onClick={closeAfterSuccess}>User page</span>
             </NavLink>{" "}
           </p>
