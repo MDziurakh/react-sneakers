@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../App";
 import CartItem from "../CartItem/CartItem";
+import CartInfo from "../CartInfo/CartInfo";
 import "./Overlay.scss";
 
 const Overlay = ({ openCart, setOpenCart, totalPrice }) => {
-  const { cartArr, onClickToOrder } = useContext(AppContext);
+  const { cartArr, onClickToOrder, orderSuccess, setOrderSuccess } = useContext(AppContext);
   return (
     <div className={openCart ? "overlayVisible overlay" : "overlay"}>
       <div className="drawer">
@@ -12,7 +13,7 @@ const Overlay = ({ openCart, setOpenCart, totalPrice }) => {
           <h2>Cart</h2>
           <img
             className="img-zoom-cursor"
-            src="/img/btn-remove.svg"
+            src="img/btn-remove.svg"
             alt="close"
             onClick={() => setOpenCart(!openCart)}
           />
@@ -32,19 +33,8 @@ const Overlay = ({ openCart, setOpenCart, totalPrice }) => {
           </div>
         ) : (
           <>
-            <div className="empty-cart">
-              <img src="/img/empty-cart.jpg" alt="empty-cart" />
-              <h3>Cart is empty</h3>
-              <p>Add at least one item to your cart</p>
-              <div className="cart-bottom-empty">
-                <button
-                  className="green-btn empty"
-                  onClick={() => setOpenCart(false)}
-                >
-                  Go back! <img src="/img/arrow.svg" alt="arrow" />
-                </button>
-              </div>
-            </div>
+          <CartInfo setOpenCart={setOpenCart} orderSuccess={orderSuccess} setOrderSuccess={setOrderSuccess}/>
+            
           </>
         )}
         {cartArr.length > 0 ? (
@@ -53,7 +43,7 @@ const Overlay = ({ openCart, setOpenCart, totalPrice }) => {
               Total price: <div className="line"></div> <b>{totalPrice}$</b>
             </div>
             <button className="green-btn" onClick={onClickToOrder}>
-              Make an order <img src="/img/arrow.svg" alt="arrow" />
+              Make an order <img src="img/arrow.svg" alt="arrow" />
             </button>
           </div>
         ) : null}

@@ -17,7 +17,7 @@ const CartItem = ({ title, price, src, parentId, id }) => {
       </div>
       <img
         className="img-zoom-cursor"
-        src="/img/btn-remove.svg"
+        src="img/btn-remove.svg"
         alt="remove"
         onClick={() => byClick()}
       />

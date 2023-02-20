@@ -6,7 +6,7 @@ const Header = ({ openCart, setOpenCart, totalPrice }) => {
     <header>
       <NavLink to="/">
         <div className="header-left">
-          <img width={40} height={40} src="/img/logo.png" alt="logo" />
+          <img width={40} height={40} src="img/logo.png" alt="logo" />
           <div>
             <h3 className="heading">React Sneakers</h3>
             <p className="subheading">Best Sneakers market</p>
@@ -18,7 +18,7 @@ const Header = ({ openCart, setOpenCart, totalPrice }) => {
         {/* <NavLink to="/cart"> */}
           <li>
             <img className="img-zoom-cursor"
-              src="/img/cart.svg"
+              src="img/cart.svg"
               alt="cart"
               onClick={() => setOpenCart(!openCart)}
             />
@@ -27,12 +27,12 @@ const Header = ({ openCart, setOpenCart, totalPrice }) => {
         {/* </NavLink> */}
         <NavLink to="/favorite">
           <li>
-            <img className="img-zoom-cursor" src="/img/heart.svg" alt="heart" />
+            <img className="img-zoom-cursor" src="img/heart.svg" alt="heart" />
           </li>
         </NavLink>
         <NavLink to="/user">
           <li>
-            <img className="img-zoom-cursor" src="/img/user.svg" alt="user" />
+            <img className="img-zoom-cursor" src="img/user.svg" alt="user" />
           </li>
         </NavLink>
       </ul>

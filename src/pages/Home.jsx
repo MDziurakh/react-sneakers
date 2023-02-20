@@ -61,7 +61,7 @@ const Home = ({ sneakers }) => {
             <img
               onClick={() => input.current.focus()}
               className="search-img img-zoom-cursor"
-              src="/img/search.svg"
+              src="img/search.svg"
               alt="search додати фокус для інпута"
             />
             <input

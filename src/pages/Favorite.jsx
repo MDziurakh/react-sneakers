@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
 import { AppContext } from "../App";
+import EmptyInfo from "../components/EmptyInfo/EmptyInfo";
 import FavItem from "../components/FavItem/FavItem";
 
 const Favorite = () => {
   // const favArr = sneakers.filter((item) => item.liked);
-  const {arr , favArr} = useContext(AppContext);
+  const { arr, favArr } = useContext(AppContext);
   const renderSneakers = () =>
-  arr.map((item) => {
+    arr.map((item) => {
       if (favArr.some((i) => i.parentId === item.parentId)) {
         return (
           <FavItem
@@ -16,7 +16,7 @@ const Favorite = () => {
             price={item.price}
             key={item.id}
             id={item.id}
-            liked={item.liked}
+            liked={true}
             parentId={item.parentId}
           />
         );
@@ -27,26 +27,16 @@ const Favorite = () => {
 
   return (
     <>
+      <h1>Favorites</h1>
       {favArr.length > 0 ? (
         <div>
-        <h1>Favorites</h1>
-        <div className="cards">{renderSneakers()}</div>
+          <div className="cards">{renderSneakers()}</div>
         </div>
       ) : (
-        <div className="container_fav-empty">
-          <div className="fav-empty">
-            <img className="emoji" src="/img/sad-eyes.svg" alt="sad-eyes" />
-            <h3>You don`t have any favorites</h3>
-            <p>Add at least one</p>
-
-            <button className="green-btn">
-              <NavLink to="/">Go back and choose!</NavLink>
-              <img src="/img/arrow.svg" alt="arrow" />
-            </button>
-          </div>
-        </div>
+        <>
+          <EmptyInfo title='You don`t have any favorites' description='Add at least one' />
+        </>
       )}
-
     </>
   );
 };

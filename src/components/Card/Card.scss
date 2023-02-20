@@ -14,17 +14,20 @@
         position: absolute;
     }
 
-    h5 {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
-
-    }
-
-    .item-img {
-        align-self: center;
-        width: 133px;
-        height: 112px;
+    .main-block{
+        flex: 1;
+        h5 {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+    
+        }
+        
+        .item-img {
+            align-self: center;
+            width: 133px;
+            height: 112px;
+        }
     }
 
     .bottom-block {

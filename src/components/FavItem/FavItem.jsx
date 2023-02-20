@@ -18,7 +18,7 @@ const FavItem = ({
       <button className="button favorite" onClick={onLikeClick}>
         <img
           className="img-zoom-cursor"
-          src={liked ? "/img/liked.svg" : "/img/heart.svg"}
+          src={liked ? "img/liked.svg" : "img/heart.svg"}
           alt="Heart"
         />
       </button>

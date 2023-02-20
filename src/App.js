@@ -7,8 +7,6 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import User from "./pages/User";
 
-
-
 export const AppContext = createContext({});
 
 function App() {
@@ -17,91 +15,9 @@ function App() {
   const [favArr, setFavArr] = useState([]);
   const [ordersArr, setOrdersArr] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [orderSuccess, setOrderSuccess] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // const sneakers = [
-  //   {
-  //     id: 1,
-  //     title: "Nike Air Max 270",
-  //     price: 40,
-  //     src: "/img/sneakers/1.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Bike Air Max 270",
-  //     price: 20,
-  //     src: "/img/sneakers/2.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Hike Air Max 270",
-  //     price: 17,
-  //     src: "/img/sneakers/3.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Nike Air Max 270",
-  //     price: 21,
-  //     src: "/img/sneakers/4.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Like Air Max 270",
-  //     price: 51,
-  //     src: "/img/sneakers/5.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Bire Air Max 270",
-  //     price: 24,
-  //     src: "/img/sneakers/6.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 7,
-  //     title: "Luke Air Max 270",
-  //     price: 42,
-  //     src: "/img/sneakers/7.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 8,
-  //     title: "Puke Air Max 270",
-  //     price: 30,
-  //     src: "/img/sneakers/8.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 9,
-  //     title: "Hook Air Max 270",
-  //     price: 32,
-  //     src: "/img/sneakers/9.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  //   {
-  //     id: 10,
-  //     title: "Duck Air Max 270",
-  //     price: 22,
-  //     src: "/img/sneakers/10.jpg",
-  //     liked: false,
-  //     inCart: false,
-  //   },
-  // ];
 
   useEffect(() => {
     async function fetchData() {
@@ -121,7 +37,6 @@ function App() {
         setTotalPrice(
           cartData.data.reduce((acc, curr) => acc + curr.price, init)
         );
-        // setTimeout(() => setIsLoading(false), 200); // щоб встигало спрацювати \щось не так тут
         setIsLoading(false);
       } catch (err) {
         console.dir(err);
@@ -168,10 +83,13 @@ function App() {
 
   const onClickToCart = async (obj) => {
     try {
+      if (orderSuccess) {
+        setOrderSuccess(false);
+      }
       const findItem = cartArr.find(
         (item) => Number(item.parentId) === Number(obj.parentId)
       );
-      // console.log(findItem, "findItem");
+
       if (findItem) {
         setCartArr((prev) => {
           return prev.filter(
@@ -212,12 +130,13 @@ function App() {
   const onClickToOrder = async () => {
     const objToOrders = { arr: cartArr };
     try {
-      // const postCurrentOrders = 
+
       await axios.post(
         `https://63e64cf37eef5b223382f966.mockapi.io/orders`,
         objToOrders
       );
-      // console.log("postCurrentOrders", postCurrentOrders);
+      setOrderSuccess(true);
+
       const { data } = await axios.get(
         `https://63e64cf37eef5b223382f966.mockapi.io/orders/`
       );
@@ -225,12 +144,12 @@ function App() {
       setCartArr([]);
       setTotalPrice(0);
 
-      for(let i = 0; i < cartArr.length; i++){
+      for (let i = 0; i < cartArr.length; i++) {
         const item = cartArr[i];
-        console.log(item);
-        await axios.delete(`https://63dd01ec367aa5a7a406c976.mockapi.io/cart/${item.id}`)
+        await axios.delete(
+          `https://63dd01ec367aa5a7a406c976.mockapi.io/cart/${item.id}`
+        );
       }
-
     } catch (err) {
       console.dir(err);
     }
@@ -246,7 +165,9 @@ function App() {
         onClickToCart,
         isLoading,
         onClickToOrder,
-        ordersArr
+        ordersArr,
+        orderSuccess,
+        setOrderSuccess,
       }}
     >
       <>

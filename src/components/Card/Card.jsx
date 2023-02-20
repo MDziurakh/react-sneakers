@@ -4,17 +4,8 @@ import ContentLoader from "react-content-loader";
 import { AppContext } from "../../App";
 import "./Card.scss";
 
-const Card = ({
-  title,
-  src,
-  price,
-  parentId,
-  id,
-  liked,
-  inCart
-}) => {
-
-  const {onClickFavorite,onClickToCart, isLoading} = useContext(AppContext);
+const Card = ({ title, src, price, parentId, id, liked, inCart }) => {
+  const { onClickFavorite, onClickToCart, isLoading } = useContext(AppContext);
 
   const onLikeClick = () => {
     onClickFavorite({ title, src, price, parentId, liked, inCart, id });
@@ -45,12 +36,14 @@ const Card = ({
           <button className="button favorite" onClick={onLikeClick}>
             <img
               className="img-zoom-cursor"
-              src={liked ? "/img/liked.svg" : "/img/heart.svg"}
+              src={liked ? "img/liked.svg" : "img/heart.svg"}
               alt="Heart"
             />
           </button>
-          <img className="item-img" src={src} alt="sneakers" />
-          <h5>{title}</h5>
+          <div className="main-block">
+            <img className="item-img" src={src} alt="sneakers" />
+            <h5>{title}</h5>
+          </div>
           <div className="bottom-block">
             <div className="price-block">
               <p>Price:</p>
@@ -59,7 +52,7 @@ const Card = ({
             <button className="button" onClick={onAddToCart}>
               <img
                 className="img-zoom-cursor"
-                src={inCart ? "/img/btn-checked.svg" : "/img/plus.svg"}
+                src={inCart ? "img/btn-checked.svg" : "img/plus.svg"}
                 alt="Plus"
               />
             </button>
