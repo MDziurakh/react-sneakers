@@ -186,8 +186,8 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home sneakers={arr} />}></Route>
-              <Route path="/user" element={<User />}></Route>
-              <Route path="/favorite" element={<Favorite />}></Route>
+              <Route path="user" element={<User />}></Route>
+              <Route path="favorite" element={<Favorite />}></Route>
             </Routes>
           </div>
         </div>

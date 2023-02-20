@@ -25,12 +25,12 @@ const Header = ({ openCart, setOpenCart, totalPrice }) => {
             <span>{totalPrice}$</span>
           </li>
         {/* </NavLink> */}
-        <NavLink to="/favorite">
+        <NavLink to="favorite">
           <li>
             <img className="img-zoom-cursor" src="img/heart.svg" alt="heart" />
           </li>
         </NavLink>
-        <NavLink to="/user">
+        <NavLink to="user">
           <li>
             <img className="img-zoom-cursor" src="img/user.svg" alt="user" />
           </li>
