@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../App";
 import EmptyInfo from "../components/EmptyInfo/EmptyInfo";
 import FavItem from "../components/FavItem/FavItem";
+import './Favorite.scss';
 
 const Favorite = () => {
   // const favArr = sneakers.filter((item) => item.liked);
@@ -27,7 +28,7 @@ const Favorite = () => {
 
   return (
     <>
-      <h1>Favorites</h1>
+      <h1 className="top-heading fav-heading">Favorites</h1>
       {favArr.length > 0 ? (
         <div>
           <div className="cards">{renderSneakers()}</div>

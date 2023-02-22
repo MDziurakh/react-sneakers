@@ -56,7 +56,7 @@ const Home = ({ sneakers }) => {
     <>
       <div>
         <div className="top-block">
-          <h1>All Products</h1>
+          <h1 className="top-heading">All Products</h1>
           <div>
             <img
               onClick={() => input.current.focus()}

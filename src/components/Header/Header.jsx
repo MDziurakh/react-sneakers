@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { CartIcon, Heart, UserIcon } from "../SvgIcons/SvgIcons";
 import "./Header.scss";
 
-const Header = ({ openCart, setOpenCart, totalPrice }) => {
+const Header = ({
+  openCart,
+  setOpenCart,
+  totalPrice,
+  favArr,
+  ordersArr,
+  cartArr,
+}) => {
   return (
     <header>
       <NavLink to="/">
@@ -15,24 +23,30 @@ const Header = ({ openCart, setOpenCart, totalPrice }) => {
       </NavLink>
 
       <ul className="header-right">
-        {/* <NavLink to="/cart"> */}
-          <li>
-            <img className="img-zoom-cursor"
-              src="img/cart.svg"
-              alt="cart"
-              onClick={() => setOpenCart(!openCart)}
-            />
-            <span>{totalPrice}$</span>
-          </li>
-        {/* </NavLink> */}
+        <li onClick={() => setOpenCart(!openCart)} className="img-zoom-cursor">
+          {cartArr.length > 0 ? (
+            <CartIcon borderColor="#22559C" />
+          ) : (
+            <CartIcon borderColor="#9B9B9B" />
+          )}
+          <span>{totalPrice}$</span>
+        </li>
         <NavLink to="favorite">
-          <li>
-            <img className="img-zoom-cursor" src="img/heart.svg" alt="heart" />
+          <li className="img-zoom-cursor">
+            {favArr.length > 0 ? (
+              <Heart borderColor="#f65d5d" />
+            ) : (
+              <Heart borderColor="#9B9B9B" />
+            )}
           </li>
         </NavLink>
         <NavLink to="user">
-          <li>
-            <img className="img-zoom-cursor" src="img/user.svg" alt="user" />
+          <li className="img-zoom-cursor">
+            {ordersArr.length > 0 ? (
+              <UserIcon borderColor="#FFB830" />
+            ) : (
+              <UserIcon borderColor="#9B9B9B" />
+            )}
           </li>
         </NavLink>
       </ul>

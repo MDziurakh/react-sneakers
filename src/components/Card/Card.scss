@@ -1,8 +1,6 @@
 .card {
-    // margin-right: 30px;
     border: 1px solid #F3F3F3;
     padding: 30px;
-    width: 220px;
     border-radius: 40px;
     position: relative;
     display: flex;
@@ -14,15 +12,16 @@
         position: absolute;
     }
 
-    .main-block{
+    .main-block {
         flex: 1;
+
         h5 {
             font-weight: 400;
             font-size: 14px;
             line-height: 17px;
-    
+
         }
-        
+
         .item-img {
             align-self: center;
             width: 133px;

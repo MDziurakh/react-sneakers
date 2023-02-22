@@ -9,7 +9,7 @@ const User = () => {
 
   return (
     <div>
-      <h1>Orders</h1>
+      <h1 className="top-heading">Orders</h1>
       {ordersArr.length < 1 ? (
         <EmptyInfo title='Orders list is empty!' description='You will see your orders here after checkout'/>
       ) : (

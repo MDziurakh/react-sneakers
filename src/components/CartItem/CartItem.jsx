@@ -6,7 +6,7 @@ const CartItem = ({ title, price, src, parentId, id }) => {
   const { onClickToCart } = useContext(AppContext);
   const byClick = () => {
     onClickToCart({ title, src, price, parentId, inCart: true, id });
-    console.log("cartItem", { title, src, price, parentId, inCart: true, id });
+    // console.log("cartItem", { title, src, price, parentId, inCart: true, id });
   };
   return (
     <div className="item">

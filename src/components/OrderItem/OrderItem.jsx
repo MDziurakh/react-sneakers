@@ -8,7 +8,7 @@ const OrderItem = ({id, arr}) => {
         <p>Order #{id}</p>
       </div>
       <div className="price-info">
-        Price : {arr.reduce((total, { price }) => total + price, 0)} $
+        <p>Price : {arr.reduce((total, { price }) => total + price, 0)} $</p>
       </div>
       <div className="img-info">
         {arr.map((i) => (

@@ -8,7 +8,8 @@ import axios from "axios";
 import User from "./pages/User";
 
 export const AppContext = createContext({});
-
+// стилізувати кошик
+// стилізувати замовлення
 function App() {
   const [arr, setArr] = useState([]);
   const [cartArr, setCartArr] = useState([]);
@@ -176,6 +177,9 @@ function App() {
             openCart={openCart}
             setOpenCart={setOpenCart}
             totalPrice={totalPrice}
+            favArr={favArr}
+            ordersArr={ordersArr}
+            cartArr={cartArr}
           />
           <Overlay
             openCart={openCart}
